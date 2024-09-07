@@ -11,6 +11,19 @@ pipeline{
             steps{
                 echo "Used JUnit to run unit tests to ensure the code functions as expected and run integration tests to ensure the different components of the application work together as expected"
             }
+
+            post{
+                success{
+                    mail to: "nguyencindy2011@gmail.com",
+                    subject: "Jenkin Success Test Status Email",
+                    body: "Build log Attached "
+                }
+                failure{
+                    mail to: "nguyencindy2011@gmail.com",
+                    subject: "Jenkin Failure Test Status Email",
+                    body: "Build log Attached "
+                }
+            }
         }
 
         stage("Code Analysis"){
