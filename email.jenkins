@@ -17,13 +17,13 @@ pipeline{
                     echo "Tests passed"
                     mail to: "nguyencindy2011@gmail.com",
                     subject: "Jenkin Success Test Status Email",
-                    body: "Build log Attached ",
+                    body: "Build log Attached "
                 }
                 failure{
                     echo "Tests failed"
                     mail to: "nguyencindy2011@gmail.com",
                     subject: "Jenkin Failure Test Status Email",
-                    body: "Build log Attached ",
+                    body: "Build log Attached "
                 }
             }
         }
