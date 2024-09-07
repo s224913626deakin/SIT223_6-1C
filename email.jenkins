@@ -38,6 +38,20 @@ pipeline{
             steps{
                 echo "Perform a security scan on the code using OWASP Dependency-Check to identify any vulnerabilities."
             }
+
+            post{
+                success{
+                    mail to: "nguyencindy2011@gmail.com",
+                    subject: "Jenkin Success Security Scan Status Email",
+                    body: "Build log Attached "
+                }
+                failure{
+                    mail to: "nguyencindy2011@gmail.com",
+                    subject: "Jenkin Failure Security Scan Status Email",
+                    body: "Build log Attached "
+                }
+            } 
+
         }
 
         stage("Deploy to Staging"){
