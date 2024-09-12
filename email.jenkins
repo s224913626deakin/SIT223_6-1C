@@ -13,19 +13,20 @@ pipeline{
             }
 
             post{
-                success{
+                success {
                     echo "Tests passed"
-                    mail to: "nguyencindy2011@gmail.com",
-                    attachLog: true,
-                    subject: "Jenkin Success Test Status Email",
-                    body: "Build log Attached "
+                    emailext attachLog: true,
+                        body: "${currentBuild.result}: ${BUILD_URL}", 
+                        compressLog: true,
+                        subject: "Jenkins Success: Test Status",
+                        to: "nguyencindy2011@gmail.com"
                 }
-                failure{
+                failure {
                     echo "Tests failed"
-                    mail to: "nguyencindy2011@gmail.com",
-                    attachLog: true,
-                    subject: "Jenkin Failure Test Status Email",
-                    body: "Build log Attached "
+                    emailext attachLog: true,
+                        subject: "Jenkins Failure: Test Status",
+                        to: "nguyencindy2011@gmail.com",
+                        body: "Build log attached."
                 }
             }
         }
@@ -42,17 +43,17 @@ pipeline{
             }
 
             post{
-                success{
-                    mail to: "nguyencindy2011@gmail.com",
-                    attachLog: true,
-                    subject: "Jenkin Success Security Scan Status Email",
-                    body: "Build log Attached "
+                success {
+                    emailext attachLog: true,
+                        subject: "Jenkins Success: Security Scan Status",
+                        to: "nguyencindy2011@gmail.com",
+                        body: "Build log attached."
                 }
-                failure{
-                    mail to: "nguyencindy2011@gmail.com",
-                    attachLog: true,
-                    subject: "Jenkin Failure Security Scan Status Email",
-                    body: "Build log Attached "
+                failure {
+                    emailext attachLog: true,
+                        subject: "Jenkins Failure: Security Scan Status",
+                        to: "nguyencindy2011@gmail.com",
+                        body: "Build log attached."
                 }
             } 
 
