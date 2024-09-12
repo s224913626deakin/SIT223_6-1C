@@ -16,19 +16,19 @@ pipeline{
                 success {
                     echo "Tests passed"
                     emailext attachLog: true,
-                        body: "${currentBuild.result}: ${BUILD_URL}", 
                         compressLog: true, 
                         to: "nguyencindy2011@gmail.com",
-                        subject: "Jenkin Success: Test Status"
+                        subject: "Jenkin Success: Test Status",
+                        body: "SUCCESS: Tests passed. Build log attached.\n\n${BUILD_URL}"
                         
                 }
                 failure {
                     echo "Tests failed"
                     emailext attachLog: true,
-                        body: "${currentBuild.result}: ${BUILD_URL}", 
                         compressLog: true,
                         to: "nguyencindy2011@gmail.com",
-                        subject: "Jenkins Failure: Test Status"
+                        subject: "Jenkins Failure: Test Status",
+                        body: "FAILURE: Tests failed. Build log attached.\n\n${BUILD_URL}"
 
                 }
             }
@@ -48,15 +48,17 @@ pipeline{
             post{
                 success {
                     emailext attachLog: true,
+                        compressLog: true,
                         subject: "Jenkins Success: Security Scan Status",
                         to: "nguyencindy2011@gmail.com",
-                        body: "Build log attached."
+                        body: "SUCCESS: Security scan passed. Build log attached.\n\n${BUILD_URL}"
                 }
                 failure {
                     emailext attachLog: true,
+                        compressLog: true,
                         subject: "Jenkins Failure: Security Scan Status",
                         to: "nguyencindy2011@gmail.com",
-                        body: "Build log attached."
+                        body: "FAILURE: Security scan failed. Build log attached.\n\n${BUILD_URL}"
                 }
             } 
 
