@@ -16,7 +16,7 @@ pipeline{
                 success {
                     echo "Tests passed"
                     emailext attachLog: true,
-                        body: "Build log attached.", 
+                        body: "${currentBuild.result}: ${BUILD_URL}", 
                         compressLog: true,
                         to: "nguyencindy2011@gmail.com",
                         subject: "Jenkins Success: Test Status"
@@ -27,7 +27,7 @@ pipeline{
                     emailext attachLog: true,
                         to: "nguyencindy2011@gmail.com",
                         subject: "Jenkins Failure: Test Status",
-                        body: "Build log attached."
+                        body: "${currentBuild.result}: ${BUILD_URL}"
                 }
             }
         }
