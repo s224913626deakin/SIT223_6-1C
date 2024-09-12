@@ -28,7 +28,7 @@ pipeline{
                         body: "${currentBuild.result}: ${BUILD_URL}", 
                         compressLog: true, 
                         to: "nguyencindy2011@gmail.com",
-                        subject: "Jenkins Failure: Test Status",
+                        subject: "Jenkins Failure: Test Status"
 
                 }
             }
