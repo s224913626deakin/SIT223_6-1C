@@ -24,7 +24,7 @@ pipeline{
                 failure {
                     echo "Tests failed"
                     emailext attachLog: true,
-                        subject: "Jenkins Failure: Test Status",
+                        subject: "Jenkin Failure: Test Status",
                         to: "nguyencindy2011@gmail.com",
                         body: "Build log attached."
                 }
