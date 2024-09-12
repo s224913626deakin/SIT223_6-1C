@@ -16,12 +16,14 @@ pipeline{
                 success{
                     echo "Tests passed"
                     mail to: "nguyencindy2011@gmail.com",
+                    attachLog: true,
                     subject: "Jenkin Success Test Status Email",
                     body: "Build log Attached "
                 }
                 failure{
                     echo "Tests failed"
                     mail to: "nguyencindy2011@gmail.com",
+                    attachLog: true,
                     subject: "Jenkin Failure Test Status Email",
                     body: "Build log Attached "
                 }
@@ -42,11 +44,13 @@ pipeline{
             post{
                 success{
                     mail to: "nguyencindy2011@gmail.com",
+                    attachLog: true,
                     subject: "Jenkin Success Security Scan Status Email",
                     body: "Build log Attached "
                 }
                 failure{
                     mail to: "nguyencindy2011@gmail.com",
+                    attachLog: true,
                     subject: "Jenkin Failure Security Scan Status Email",
                     body: "Build log Attached "
                 }
