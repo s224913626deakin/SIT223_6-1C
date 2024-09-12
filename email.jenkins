@@ -19,8 +19,6 @@ pipeline{
                     subject: "Jenkin Success Test Status Email",
                     body: "${currentBuild.result}: ${BUILD_URL}", 
                     attachlog: true,
-                    
-
                 }
                 failure{
                     echo "Tests failed"
